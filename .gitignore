@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+# 사용자가 돌린 결과물은 리포에 들어오지 않는다 (고객 데이터)
+*_segments.csv
+*_migration.csv
+scratch/

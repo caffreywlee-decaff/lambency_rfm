@@ -1,0 +1,22 @@
+[project]
+name = "lambency-rfm"
+version = "0.1.0"
+description = "주문 CSV 를 넣으면 가중 RFM 등급·모양·전이표를 돌려주는 MCP/CLI — 무게·블렌드·잠든 배수·구간표가 전부 파라미터"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = ["pandas>=1.5", "numpy>=1.23"]
+
+[project.optional-dependencies]
+mcp = ["mcp[cli]>=1.2"]
+dev = ["pytest>=7"]
+
+[project.scripts]
+lambency-rfm = "lambency_rfm.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["lambency_rfm"]
