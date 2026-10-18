@@ -11,10 +11,13 @@
 """
 from . import core
 
-try:
+try:                                   # mcp 1.x
     from mcp.server.fastmcp import FastMCP
-except ImportError as e:  # noqa: BLE001
-    raise SystemExit('mcp 패키지가 필요합니다: pip install "mcp[cli]"  (서버 없이 CLI 만 쓰려면 python -m lambency_rfm.cli)') from e
+except ImportError:
+    try:                               # mcp 2.x — FastMCP 가 MCPServer 로 이름이 바뀌었다 (2026-10-18 실측, mcp 2.3.0)
+        from mcp.server import MCPServer as FastMCP
+    except ImportError as e:  # noqa: BLE001
+        raise SystemExit('mcp 패키지가 필요합니다: pip install "mcp[cli]"  (서버 없이 CLI 만 쓰려면 python -m lambency_rfm.cli)') from e
 
 mcp = FastMCP("lambency_rfm")
 
